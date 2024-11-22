@@ -15,6 +15,6 @@ public class ControladorParImpar {
 			res = "El numero " + numero + " es impar";
 		}
 		
-		return res;
+		return "<h1>" +  res + "</h1>";
 	}
 }
