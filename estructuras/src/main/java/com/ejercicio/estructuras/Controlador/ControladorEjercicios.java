@@ -1,5 +1,6 @@
 package com.ejercicio.estructuras.Controlador;
 
+import java.text.ParseException;
 import java.util.Iterator;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,5 +30,22 @@ public class ControladorEjercicios {
 			res += "<p>" + i + " X " + numero + " = " + multiplicacion + "</p>";
 		}
 		return res;
+	}
+	
+	@PostMapping("/promedioCalificaciones")
+	public String promedioCalificaciones (@RequestParam String calificaciones) {
+		String nuevaCalificaciones = calificaciones.replaceAll(" ", "");
+		String[] notas = nuevaCalificaciones.split(",");
+		double nota = 0;
+		double media = 0;
+		
+		for (int i = 0; i < notas.length; i++) {
+			nota += Double.parseDouble(notas[i]);
+		}
+		
+		media = nota / notas.length;
+		return media > 5 ? "Alumno tiene una media de " + media + " por tanto está aprobado " : " Alumno tiene media de " + media + " por tanto está suspenso";
+		
+		
 	}
 }
