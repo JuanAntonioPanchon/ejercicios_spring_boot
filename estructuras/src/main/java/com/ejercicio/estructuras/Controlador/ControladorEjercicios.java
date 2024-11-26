@@ -1,5 +1,6 @@
 package com.ejercicio.estructuras.Controlador;
 
+import java.security.SecureRandom;
 import java.text.ParseException;
 import java.util.Iterator;
 
@@ -75,7 +76,8 @@ public class ControladorEjercicios {
 		if (satisfaccion != null) {
 			switch (satisfaccion) {
 			case 1:
-				res = "Muchas gracias, su puntuación ha sido de " + satisfaccion + " trataremos de mejorar para el futuro";
+				res = "Muchas gracias, su puntuación ha sido de " + satisfaccion
+						+ " trataremos de mejorar para el futuro";
 				break;
 			case 2:
 				res = "Muchas gracias, su puntuación ha sido de " + satisfaccion + " aun nos queda por mejorar";
@@ -100,5 +102,18 @@ public class ControladorEjercicios {
 			res = "Debes realizar una puntuacion de manera obligatoria";
 		}
 		return res;
+	}
+
+	// Ejercicio 6 generador de Contraseñas
+	@PostMapping("/generarContrasena")
+	public String generarContrasena(@RequestParam int longitud) {
+		String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+		SecureRandom aleatorio = new SecureRandom();
+		StringBuilder contrasena = new StringBuilder();
+		for (int i = 0; i < longitud; i++) {
+			int index = aleatorio.nextInt(characters.length());
+			contrasena.append(characters.charAt(index));
+		}
+		return "Su contrasena generada aleatoriamente es " + contrasena.toString();
 	}
 }
