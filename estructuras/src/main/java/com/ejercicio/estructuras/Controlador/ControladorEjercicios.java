@@ -116,4 +116,28 @@ public class ControladorEjercicios {
 		}
 		return "Su contrasena generada aleatoriamente es " + contrasena.toString();
 	}
+
+	// Ejercicio 7 Sumatoria en Bucle
+	@PostMapping("/sumatoria")
+	public String sumatoria(@RequestParam int numero) {
+		String res = "";
+		int sumatorio = 0;
+		for (int i = 0; i <= numero; i++) {
+			sumatorio += i;
+		}
+		res = "El sumatorio de " + numero + " = " + sumatorio;
+		return res;
+	}
+
+	// Ejercicio 8 factorial
+	@PostMapping("/factorial")
+	public String factorial(@RequestParam int numero) {
+		String res = "";
+		int factorial = 1;
+		for (int i = 1; i <= numero; i++) {
+			factorial = factorial * i;
+		}
+		res = "El factorial de " + numero + " = " + factorial;
+		return res;
+	}
 }
